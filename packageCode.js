@@ -757,18 +757,18 @@ function addUrlMultiParam(url,arr){
 	}
 	return url;
 }
-console.log(addUrlSingleParam('www.baidu.com','me','cai'))
-var arr=[
-	{
-		name:'wo',
-		value:'cai'
-	},
-	{
-		name:'you',
-		value:'yin'
-	}
-]
-console.log(addUrlMultiParam('www.baidu.com',arr))
+//console.log(addUrlSingleParam('www.baidu.com','me','cai'))
+//var arr=[
+//	{
+//		name:'wo',
+//		value:'cai'
+//	},
+//	{
+//		name:'you',
+//		value:'yin'
+//	}
+//]
+//console.log(addUrlMultiParam('www.baidu.com',arr))
 
 
 
