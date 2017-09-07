@@ -371,6 +371,19 @@ function removeArrayForValue(arr,val,type){
     arr.filter(function(item){return type==='%'?item.indexOf(val)!==-1:item!==val})
 }
 
+//3-10 字符串前面加0   00:01:20
+	function paddingString(num, n) {  
+	    var len = num.toString().length;  
+	    while(len < n) {  
+	        num = "0" + num;  
+	        len++;  
+	    }  
+	    return num;  
+	}  
+//	console.log(pad(10,6))
+
+
+
 //4.基础DOM操作
 //
 //这个部分代码其实参考jquery的一些函数写法，唯一区别就是调用不用，参数一样.
@@ -704,15 +717,15 @@ var myJS={
 
 //可能有小伙伴会有疑问，这样封装，调用有点麻烦，为什么不直接在原型上面封装，调用方便。比如下面的栗子！
 
-String.prototype.trim=function(type){
-    switch (type){
-        case 1:return this.replace(/\s+/g,"");
-        case 2:return this.replace(/(^\s*)|(\s*$)/g, "");
-        case 3:return this.replace(/(^\s*)/g, "");
-        case 4:return this.replace(/(\s*$)/g, "");
-        default:return this;
-    }
-}
+//String.prototype.trim=function(type){
+//  switch (type){
+//      case 1:return this.replace(/\s+/g,"");
+//      case 2:return this.replace(/(^\s*)|(\s*$)/g, "");
+//      case 3:return this.replace(/(^\s*)/g, "");
+//      case 4:return this.replace(/(\s*$)/g, "");
+//      default:return this;
+//  }
+//}
 //'  12345 6 8 96  '.trim(1)
 //"123456896"
 //比这样trim('  12345 6 8 96  ',1)调用方便。
@@ -724,3 +737,38 @@ String.prototype.trim=function(type){
 //substr方法有什么作用，大家应该知道，不知道的可以去w3c看下
 //
 //所以在原生对象原型的修改很不推荐！至少很多的公司禁止这样操作！
+
+
+//6-self
+//6-1、url后面添加参数
+//只添加单个参数
+function addUrlSingleParam(url,name,value){
+	url+=(url.indexOf('?') == -1 ? '?' : '&');
+	url += encodeURIComponent(name) + '=' + encodeURIComponent(value);
+	return url;
+}
+//添加多个参数
+function addUrlMultiParam(url,arr){
+	var i,len;
+	for(i=0,len=arr.length;i<len;i++){
+		url+=(url.indexOf('?') == -1 ? '?' : '&');
+		var item=arr[i];
+		url += encodeURIComponent(item.name) + '=' + encodeURIComponent(item.value);
+	}
+	return url;
+}
+console.log(addUrlSingleParam('www.baidu.com','me','cai'))
+var arr=[
+	{
+		name:'wo',
+		value:'cai'
+	},
+	{
+		name:'you',
+		value:'yin'
+	}
+]
+console.log(addUrlMultiParam('www.baidu.com',arr))
+
+
+
